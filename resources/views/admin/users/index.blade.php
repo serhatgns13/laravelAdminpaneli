@@ -202,11 +202,12 @@
                                             <th>Ad</th>
                                             <th>E-posta</th>
                                             <th>Tarih</th>
+                                            <th>Yetki</th>
                                             <th class="text-end">İşlem</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($users as $value)
+                                        @foreach ($users as $user)
                                             <tr class="single-item">
                                                 <td>
                                                     <div class="item-checkbox ms-1">
@@ -218,9 +219,17 @@
                                                     </div>
                                                 </td>
 
-                                                <td>{{ $value->name }}</td>
-                                                <td>{{ $value->email }}</td>
-                                                <td>{{ $value->created_at }}</td>
+                                                <td>{{ $user->name }}</td>
+                                                <td>{{ $user->email }}</td>
+                                                <td>{{ $user->created_at }}</td>
+                                                <td>
+
+                                                    @foreach ($user->roles as $role )
+                                                        <span class="badge bg-light-primary">{{$role->title}}</span>
+                                                        
+                                                    @endforeach
+
+                                                </td>
                                                 <td>
                                                     <div class="hstack gap-2 justify-content-end">
                                                         <a href="customers-view.html" class="avatar-text avatar-md">
